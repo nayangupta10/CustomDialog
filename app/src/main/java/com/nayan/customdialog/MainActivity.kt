@@ -65,5 +65,12 @@ class MainActivity : AppCompatActivity() {
             customDialog.setCancelable(false)
             customDialog.show()
         }
+
+        btnCustomProgressBarDialog.setOnClickListener {
+            var customDialogProgressBar = Dialog(this)
+
+            customDialogProgressBar.setContentView(R.layout.dialog_custom_progress_bar)
+            customDialogProgressBar.show()
+        }
     }
 }
