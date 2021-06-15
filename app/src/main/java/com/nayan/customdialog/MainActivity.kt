@@ -1,11 +1,13 @@
 package com.nayan.customdialog
 
+import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.dialog_custom.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,13 +40,30 @@ class MainActivity : AppCompatActivity() {
             }
 
             builder.setNegativeButton("No") { dialogInterface, _ ->
-                Toast.makeText(applicationContext, "Click No", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Clicked No", Toast.LENGTH_SHORT).show()
                 dialogInterface.dismiss()
             }
 
             val alertDialog: AlertDialog = builder.create()
             alertDialog.setCancelable(false)
             alertDialog.show()
+        }
+
+        btnCustomDialog.setOnClickListener {
+            var customDialog = Dialog(this)
+            customDialog.setContentView(R.layout.dialog_custom)
+
+            customDialog.tvSubmit.setOnClickListener {
+                Toast.makeText(applicationContext, "Clicked Submit", Toast.LENGTH_SHORT).show()
+                customDialog.dismiss()
+            }
+
+            customDialog.tvCancel.setOnClickListener {
+                Toast.makeText(applicationContext, "Clicked Cancel", Toast.LENGTH_SHORT).show()
+                customDialog.dismiss()
+            }
+            customDialog.setCancelable(false)
+            customDialog.show()
         }
     }
 }
